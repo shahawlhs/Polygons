@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
  * @date 2/2/23
  * @author Ajay Shah
  *
- * @description Creates a polygon with a user determined number of sides, side length, ans shape type.
+ * @description Creates a polygon with a user determined number of sides, side length, and shape type.
  */
 
 public class Polygon {
