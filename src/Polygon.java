@@ -18,7 +18,7 @@ public class Polygon {
     public Polygon(){
         sides = 3;
         length = 1.0;
-        type = "Triangle";
+        type = "triangle";
     }
 
 
@@ -33,20 +33,17 @@ public class Polygon {
      */
 
     public Polygon(int s, double l, String t){
-        if (s > 2){
-            sides = s;
-        }
-        else {
+        if (s < 2 || l < 0.0){ //evaluates t
             sides = 3;
-        }
-        if (l != 0.0){
-            length = l;
+            length = 1.0;
+            type = "triangle";
         }
         else {
-            length = 1.0;
-        }
+            sides = s;
+            length = l;
+            type = t;
 
-        type = t;
+        }
     }
 
 
