@@ -84,7 +84,7 @@ public class Polygon {
      */
 
     public String toString(){
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("#.###");
         return "Your shape is a " + type + " with " + sides + " sides and a length of " + df.format(length) + ".";
     }
 }
