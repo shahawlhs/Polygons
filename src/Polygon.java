@@ -13,11 +13,15 @@ public class Polygon {
     private int sides;
     private double length;
     private String type;
+    private double area;
+    private double perimeter;
 
     //default constructor
     public Polygon(){
         sides = 3;
         length = 1.0;
+        perimeter = 3.0;
+        area = 0.433;
         type = "triangle";
     }
 
@@ -36,13 +40,14 @@ public class Polygon {
         if (s < 2 || l < 0.0){ //evaluates t
             sides = 3;
             length = 1.0;
+            perimeter = 3.0;
             type = "triangle";
         }
         else {
             sides = s;
             length = l;
             type = t;
-
+            calculatePerimeter();
         }
     }
 
@@ -76,6 +81,34 @@ public class Polygon {
         return type;
     }
 
+    public double getPerimeter(){
+        return perimeter;
+    }
+
+
+
+    //mutators
+
+    public void setNumSides(int newNumSides){
+        sides = newNumSides;
+    }
+
+    public void setSideLength(double newSideLength){
+        length = newSideLength;
+    }
+
+    public void setShapeName(String newShapeType){
+        type = newShapeType;
+    }
+
+
+    //other methods
+
+    public double calculatePerimeter(){
+        perimeter = sides * length;
+        return perimeter;
+    }
+
     //toString method
 
     /**
@@ -85,6 +118,7 @@ public class Polygon {
 
     public String toString(){
         DecimalFormat df = new DecimalFormat("#.###");
-        return "Your shape is a " + type + " with " + sides + " sides and a length of " + df.format(length) + ".";
+        return "Your shape is a " + type + " and it has " + sides + " sides. It has a side length of " +
+                df.format(length) + ". The perimeter of your shape is " + df.format(perimeter);
     }
 }
