@@ -15,14 +15,15 @@ public class Polygon {
     private String type;
     private double area;
     private double perimeter;
+    private boolean check;
 
     //default constructor
-    public Polygon(){
+    public Polygon() {
         sides = 3;
         length = 1.0;
         perimeter = 3.0;
         area = 0.433;
-        type = "triangle";
+        type = "Triangle";
     }
 
 
@@ -36,18 +37,21 @@ public class Polygon {
      * @param t type of polygon
      */
 
-    public Polygon(int s, double l, String t){
-        if (s < 2 || l < 0.0){ //evaluates t
+    public Polygon(int s, double l, String t) {
+        if (s < 2 || l < 0.0) { //evaluates t
             sides = 3;
             length = 1.0;
             perimeter = 3.0;
-            type = "triangle";
-        }
-        else {
+            area = 0.433;
+            type = "Triangle";
+            check = false;
+        } else {
             sides = s;
             length = l;
             type = t;
+            calculateArea();
             calculatePerimeter();
+            check = true;
         }
     }
 
@@ -55,70 +59,87 @@ public class Polygon {
     //accessors
 
     /**
-     *
      * @return the number of sides on the polygon
      */
 
-    public int getNumSides(){
+    public int getNumSides() {
         return sides;
     }
 
     /**
-     *
      * @return the length of each side of the polygon
      */
 
-    public double getSideLength(){
+    public double getSideLength() {
         return length;
     }
 
     /**
-     *
      * @return the type of polygon
      */
 
-    public String getShapeType(){
+    public String getShapeType() {
         return type;
     }
 
-    public double getPerimeter(){
+    /**
+     * @return the perimeter of the polygon
+     */
+
+    public double getPerimeter() {
         return perimeter;
     }
 
+    /**
+     * @return the area of the polygon
+     */
+
+    public double getArea() {
+        return area;
+    }
 
 
     //mutators
 
-    public void setNumSides(int newNumSides){
+    public void setNumSides(int newNumSides) {
         sides = newNumSides;
     }
 
-    public void setSideLength(double newSideLength){
+    public void setSideLength(double newSideLength) {
         length = newSideLength;
     }
 
-    public void setShapeName(String newShapeType){
+    public void setShapeName(String newShapeType) {
         type = newShapeType;
     }
 
 
     //other methods
 
-    public double calculatePerimeter(){
+    public double calculatePerimeter() {
         perimeter = sides * length;
         return perimeter;
+    }
+
+    public double calculateArea() {
+        area = (sides * (length * length)) / (4.0 * Math.tan((Math.PI / sides)));
+        return area;
     }
 
     //toString method
 
     /**
-     *
      * @return Prints the type of polygon with the number of sides and the length of each side
      */
 
-    public String toString(){
+    public String toString() {
         DecimalFormat df = new DecimalFormat("#.###");
-        return "Your shape is a " + type + " and it has " + sides + " sides. It has a side length of " +
-                df.format(length) + ". The perimeter of your shape is " + df.format(perimeter);
+        if (check == false) {
+            return "Not a valid polygon. Your polygon was given a default of " + sides + ", was named " + type + ", and each side has a length of " + length + " units.";
+        }
+        else {
+            return "Your shape is a " + type + " and it has " + sides + " sides. It has a side length of " +
+                    df.format(length) + ". The perimeter of your shape is " + df.format(perimeter) + ". The area of your shape is " + df.format(area) + " units squared.";
+        }
     }
 }
