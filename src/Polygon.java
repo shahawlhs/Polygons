@@ -30,7 +30,8 @@ public class Polygon {
     //overload constructor
 
     /**
-     * Creates a Polygon object with sides, length, and type
+     * Creates a Polygon object with sides, length, type, area, and perimeter
+     * It also uses the variable check to see which toString to run
      *
      * @param s number of sides the polygon has
      * @param l length of each side
@@ -101,13 +102,30 @@ public class Polygon {
 
     //mutators
 
+
+
+    /**
+     * @description Allows the user to change the number of sides on the polygon
+     * @param newNumSides
+     */
+
     public void setNumSides(int newNumSides) {
         sides = newNumSides;
     }
 
+    /**
+     * @description Allows the user to change the length of the sides on the polygon
+     * @param newSideLength
+     */
+
     public void setSideLength(double newSideLength) {
         length = newSideLength;
     }
+
+    /**
+     * @description Allows the user to change the name of the polygon
+     * @param newShapeType
+     */
 
     public void setShapeName(String newShapeType) {
         type = newShapeType;
@@ -116,10 +134,20 @@ public class Polygon {
 
     //other methods
 
+    /**
+     *
+     * @description calculates the perimeter of the polygon
+     */
+
     public double calculatePerimeter() {
         perimeter = sides * length;
         return perimeter;
     }
+
+    /**
+     *
+     * @description calculates the area of the polygon
+     */
 
     public double calculateArea() {
         area = (sides * (length * length)) / (4.0 * Math.tan((Math.PI / sides)));
