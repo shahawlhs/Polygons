@@ -88,7 +88,8 @@ public class Polygon {
      */
 
     public double getPerimeter() {
-        return perimeter;
+        perimeter = sides * length;
+        return perimeter = Math.round(perimeter*1000)/1000.0;
     }
 
     /**
@@ -96,7 +97,8 @@ public class Polygon {
      */
 
     public double getArea() {
-        return area;
+        area = (sides * (length * length)) / (4.0 * Math.tan((Math.PI / sides)));
+        return area = Math.round(area*1000)/1000.0;
     }
 
 
@@ -110,7 +112,9 @@ public class Polygon {
      */
 
     public void setNumSides(int newNumSides) {
-        sides = newNumSides;
+        if(sides <= 3) {
+            sides = newNumSides;
+        }
     }
 
     /**
@@ -119,7 +123,9 @@ public class Polygon {
      */
 
     public void setSideLength(double newSideLength) {
-        length = newSideLength;
+        if(length <= 1.0){
+            length = newSideLength;
+        }
     }
 
     /**
@@ -128,7 +134,9 @@ public class Polygon {
      */
 
     public void setShapeName(String newShapeType) {
-        type = newShapeType;
+        if(newShapeType != ("none")){
+            type = newShapeType;
+        }
     }
 
 
@@ -141,7 +149,7 @@ public class Polygon {
 
     public double calculatePerimeter() {
         perimeter = sides * length;
-        return perimeter;
+        return perimeter = Math.round(perimeter*1000)/1000.0;
     }
 
     /**
@@ -151,7 +159,7 @@ public class Polygon {
 
     public double calculateArea() {
         area = (sides * (length * length)) / (4.0 * Math.tan((Math.PI / sides)));
-        return area;
+        return area = Math.round(area*1000)/1000.0;
     }
 
     //toString method
